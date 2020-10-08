@@ -1,15 +1,13 @@
 import React from 'react';
+import { Header, Welcome, Searchbar } from './components';
 import './App.scss';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <button className="btn btn-primary">Hello</button>
-      </header>
+      <Header />
+      <Searchbar />
+      <Welcome />
     </div>
   );
 }
