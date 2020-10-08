@@ -1,14 +1,20 @@
 import React from 'react';
 import { Header, Welcome, Searchbar } from './components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Header />
-      <Searchbar />
-      <Welcome />
-    </div>
+      <Switch>
+        <Route path="/">
+          <Searchbar />
+          <Welcome />
+        </Route>
+        <Route path="/repo">{/* Repo details page */}</Route>
+      </Switch>
+    </Router>
   );
 }
 
