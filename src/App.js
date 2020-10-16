@@ -1,5 +1,11 @@
 import React from 'react';
-import { Header, Welcome, Searchbar } from './components';
+import {
+  Header,
+  Welcome,
+  Searchbar,
+  SearchResults,
+  RepoDetails,
+} from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 
@@ -7,12 +13,11 @@ function App() {
   return (
     <Router>
       <Header />
+      <Searchbar />
       <Switch>
-        <Route path="/">
-          <Searchbar />
-          <Welcome />
-        </Route>
-        <Route path="/repo">{/* Repo details page */}</Route>
+        <Route exact path="/" component={Welcome} />
+        <Route exact path="/search" component={SearchResults} />
+        <Route exact path="/repo" component={RepoDetails} />
       </Switch>
     </Router>
   );
