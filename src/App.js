@@ -5,6 +5,7 @@ import {
   Searchbar,
   SearchResults,
   RepoDetails,
+  Footer,
 } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/search" component={SearchResults} />
         <Route exact path="/repo" component={RepoDetails} />
       </Switch>
+      <Footer />
     </Router>
   );
 }
