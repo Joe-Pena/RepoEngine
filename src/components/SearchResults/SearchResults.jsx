@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '../../hooks';
+import SearchFilters from '../SearchFilters/SearchFilters';
 
 const SearchResults = () => {
   const [repos, setRepos] = useState([]);
@@ -29,6 +30,7 @@ const SearchResults = () => {
 
   return (
     <React.Fragment>
+      <SearchFilters />
       {loading && <h3>Loadin...</h3>}
       {error && <h3>Error</h3>}
       {repos && !loading && (
