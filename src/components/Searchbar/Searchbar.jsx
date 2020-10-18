@@ -11,19 +11,23 @@ const Searchbar = () => {
   const history = useHistory();
   const queryParams = useQuery();
 
-  const searchTerm = queryParams.get('q');
+  const searchTerms = queryParams.get('q');
+  // The search term might contain language queries,
+  // so we remove those before we set the input value.
+  const searchQuery = searchTerms.split(' ')[0];
+  const languageQuery = searchTerms.split(' ').slice(1);
 
   useEffect(() => {
-    if (searchTerm) {
-      setInput(searchTerm);
+    if (searchQuery) {
+      setInput(searchQuery);
     }
-  }, [searchTerm]);
+  }, [searchTerms]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (input) {
-      history.push(`/search?q=${input}`);
+      history.push(`/search?q=${input}+${languageQuery}`);
     }
   };
 

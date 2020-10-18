@@ -21,7 +21,12 @@ const SearchFilters = () => {
       <Form.Group>
         <Form.Label>Sort By:</Form.Label>
         {sortBy.map((option) => (
-          <Form.Check type="radio" label={option.displayName} name="sorting" />
+          <Form.Check
+            type="radio"
+            label={option.displayName}
+            name="sorting"
+            key={option.name}
+          />
         ))}
       </Form.Group>
       <Form.Group>
@@ -31,6 +36,7 @@ const SearchFilters = () => {
             type="checkbox"
             label={lang.displayName}
             name="language"
+            key={lang.name}
           />
         ))}
       </Form.Group>
