@@ -18,6 +18,7 @@ const Searchbar = () => {
       setInput(searchTerm);
     }
   }, [searchTerm]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 

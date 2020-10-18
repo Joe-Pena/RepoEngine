@@ -34,8 +34,8 @@ const SearchResults = () => {
       {repos && !loading && (
         <ul>
           {repos.map((repo) => (
-            <li>
-              <Link to={`/repos/${repo.name}`}>{repo.name}</Link>
+            <li key={repo.id}>
+              <Link to={`/repos/${repo.full_name}`}>{repo.name}</Link>
             </li>
           ))}
         </ul>
