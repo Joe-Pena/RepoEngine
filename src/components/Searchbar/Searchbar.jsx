@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useHistory } from 'react-router-dom';
 
+import { useQuery } from '../../hooks';
+
 const Searchbar = () => {
   const [input, setInput] = useState('');
   const history = useHistory();
+  const queryParams = useQuery();
 
+  const searchTerm = queryParams.get('q');
+
+  useEffect(() => {
+    if (searchTerm) {
+      setInput(searchTerm);
+    }
+  }, [searchTerm]);
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -32,6 +42,7 @@ const Searchbar = () => {
             id="inlineFormInputGroup"
             placeholder="Search Repositories"
             className="bg-light text-black rounded-0"
+            value={input}
             onChange={(e) => setInput(e.target.value)}
           />
           <Button variant="dark" type="submit" className="rounded-0">

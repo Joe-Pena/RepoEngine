@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from '../../hooks';
 
 const SearchResults = () => {
@@ -24,12 +25,22 @@ const SearchResults = () => {
           setLoading(false);
         });
     }
-  }, []);
+  }, [searchTerm]);
 
   return (
-    <p>
-      <strong>Location Props: {queryParams.get('q')}</strong>
-    </p>
+    <React.Fragment>
+      {loading && <h3>Loadin...</h3>}
+      {error && <h3>Error</h3>}
+      {repos && !loading && (
+        <ul>
+          {repos.map((repo) => (
+            <li>
+              <Link to={`/repos/${repo.name}`}>{repo.name}</Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </React.Fragment>
   );
 };
 

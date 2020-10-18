@@ -18,7 +18,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Welcome} />
         <Route exact path="/search" component={SearchResults} />
-        <Route exact path="/repo" component={RepoDetails} />
+        <Route path="/repos" component={RepoDetails} />
       </Switch>
       <Footer />
     </Router>
