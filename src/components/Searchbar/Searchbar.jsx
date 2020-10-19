@@ -21,7 +21,7 @@ const Searchbar = () => {
     if (searchQuery) {
       setInput(searchQuery);
     }
-  }, [searchTerms]);
+  }, [searchQuery, languageQuery]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

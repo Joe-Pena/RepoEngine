@@ -3,24 +3,9 @@ import { Col, Form } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import slugify from 'slugify';
 import { useQuery } from '../../hooks';
+import { sortingRules, languages } from './filters';
 
-const sortBy = [
-  { displayName: 'Relevance', name: 'best-match' },
-  { displayName: 'Stars', name: 'stars' },
-  { displayName: 'Forks', name: 'forks' },
-  { displayName: 'Issues', name: 'help-wanted-issues' },
-  { displayName: 'Last Updated', name: 'updated' },
-];
-
-const languages = [
-  { displayName: 'JavaScript', name: 'javascript' },
-  { displayName: 'Python', name: 'python' },
-  { displayName: 'Ruby', name: 'ruby' },
-  { displayName: 'C', name: 'c' },
-  { displayName: 'Golang', name: 'go' },
-];
-
-const SearchFilters = () => {
+const SearchFilters = ({ params, onParamChange }) => {
   const history = useHistory();
   const queryParams = useQuery();
   const [lang, setLang] = useState('');
@@ -49,7 +34,7 @@ const SearchFilters = () => {
     <Form>
       <Form.Group as={Col}>
         <Form.Label>Sort By:</Form.Label>
-        {sortBy.map((option) => (
+        {sortingRules.map((option) => (
           <Form.Check
             type="radio"
             label={option.displayName}

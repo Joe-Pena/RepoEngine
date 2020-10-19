@@ -30,6 +30,10 @@ const RepoCard = ({ repo }) => {
                 <FontAwesomeIcon icon="code-branch" className="mr-1" />
                 {repo.forks_count}
               </Badge>
+              <Badge variant="danger" className="mr-2">
+                <FontAwesomeIcon icon="wrench" className="mr-1" />
+                {repo.open_issues_count}
+              </Badge>
               <Badge variant="info">
                 <FontAwesomeIcon icon="eye" className="mr-1" />
                 {repo.watchers_count}
@@ -37,7 +41,7 @@ const RepoCard = ({ repo }) => {
               <Card.Text className="mt-2">{repo.description}</Card.Text>
             </div>
             <Image
-              className="d-none d-md-block"
+              className="d-none d-sm-block"
               height="50"
               src={repo.owner.avatar_url}
               alt={repo.owner.login}

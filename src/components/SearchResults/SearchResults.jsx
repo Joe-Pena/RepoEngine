@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import Axios from 'axios';
 
 import useFetchRepos from '../../hooks/useFetchRepos';
 import { useQuery } from '../../hooks';
@@ -21,13 +19,27 @@ const SearchResults = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      setParams({ q: searchTerm });
+      const qParams = {
+        q: searchTerm,
+        sort: sortingRule,
+        page: pageNum,
+      };
+      setParams(qParams);
     }
   }, [searchTerm, sortingRule, pageNum]);
 
+  const handleParamChange = (e) => {
+    const param = e.target.name;
+    const value = e.target.value;
+    setPage(1);
+    setParams((prevParams) => {
+      return { ...prevParams, [param]: value };
+    });
+  };
+
   return (
     <Container>
-      <SearchFilters />
+      <SearchFilters params={params} onParamChange={handleParamChange} />
       <RepoPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
       {loading && <h3>Loading...</h3>}
       {error && <h3>Error</h3>}
