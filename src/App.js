@@ -9,6 +9,11 @@ import {
 } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { faStar, faCodeBranch, faEye } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fab, faStar, faCodeBranch, faEye);
 
 function App() {
   return (
