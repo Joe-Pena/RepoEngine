@@ -32,32 +32,34 @@ const SearchFilters = ({ params, onParamChange }) => {
 
   return (
     <Form>
-      <Form.Group as={Col}>
-        <Form.Label>Sort By:</Form.Label>
-        {sortingRules.map((option) => (
-          <Form.Check
-            type="radio"
-            label={option.displayName}
-            name="sorting"
-            value={option.name}
-            key={option.name}
-            onChange={(e) => handleSort(e)}
-          />
-        ))}
-      </Form.Group>
-      <Form.Group as={Col}>
-        <Form.Label>Filter By Language:</Form.Label>
-        {languages.map((lang) => (
-          <Form.Check
-            type="radio"
-            label={lang.displayName}
-            name="language"
-            value={lang.name}
-            key={lang.name}
-            onChange={(e) => handleLang(e)}
-          />
-        ))}
-      </Form.Group>
+      <Form.Row>
+        <Form.Group as={Col}>
+          <Form.Label>Sort By:</Form.Label>
+          {sortingRules.map((option) => (
+            <Form.Check
+              type="radio"
+              label={option.displayName}
+              name="sorting"
+              value={option.name}
+              key={option.name}
+              onChange={(e) => handleSort(e)}
+            />
+          ))}
+        </Form.Group>
+        <Form.Group as={Col}>
+          <Form.Label>Filter By Language:</Form.Label>
+          {languages.map((lang) => (
+            <Form.Check
+              type="radio"
+              label={lang.displayName}
+              name="language"
+              value={lang.name}
+              key={lang.name}
+              onChange={(e) => handleLang(e)}
+            />
+          ))}
+        </Form.Group>
+      </Form.Row>
     </Form>
   );
 };

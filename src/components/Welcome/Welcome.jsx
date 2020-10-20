@@ -1,14 +1,18 @@
 import React from 'react';
-import { Col, Container } from 'react-bootstrap';
+import { Card, Col, Container } from 'react-bootstrap';
 
 const Welcome = () => (
-  <Container className="justify-content-center">
-    <Col>
-      <h1 className="bold">
-        Finding Repos for open source has never been so simple
-      </h1>
-    </Col>
-  </Container>
+  <Card className="bg-primary my-5 mx-3">
+    <Card.Body className="text-white text-left">
+      <Card.Title className="font-weight-bolder">
+        Finding Repositories has never been easier.
+      </Card.Title>
+      <Card.Text>
+        You need to find a repo with the most stars, or the highest amount of
+        issues? That's why we're here.
+      </Card.Text>
+    </Card.Body>
+  </Card>
 );
 
 export default Welcome;

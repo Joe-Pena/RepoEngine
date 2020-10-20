@@ -6,10 +6,7 @@ import { Link } from 'react-router-dom';
 const RepoCard = ({ repo }) => {
   return (
     <Card className="my-3">
-      <Link
-        className="text-dark text-decoration-none"
-        to={`/repos/${repo.full_name}`}
-      >
+      <a className="text-dark text-decoration-none" href={repo.html_url}>
         <Card.Body>
           <div className="d-flex justify-content-between">
             <div>
@@ -40,16 +37,21 @@ const RepoCard = ({ repo }) => {
               </Badge>
               <Card.Text className="mt-2">{repo.description}</Card.Text>
             </div>
-            <Image
-              className="d-none d-sm-block"
-              height="50"
-              src={repo.owner.avatar_url}
-              alt={repo.owner.login}
-              roundedCircle
-            />
+            <div className="d-flex flex-column justify-content-between">
+              <Image
+                className="d-none d-sm-block"
+                height="50"
+                src={repo.owner.avatar_url}
+                alt={repo.owner.login}
+                roundedCircle
+              />
+              <Card.Subtitle className="text-muted">
+                {repo.language}
+              </Card.Subtitle>
+            </div>
           </div>
         </Card.Body>
-      </Link>
+      </a>
     </Card>
   );
 };
