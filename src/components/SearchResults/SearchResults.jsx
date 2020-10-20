@@ -1,49 +1,53 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import Axios from 'axios';
+import { Container } from 'react-bootstrap';
 
+import useFetchRepos from '../../hooks/useFetchRepos';
 import { useQuery } from '../../hooks';
-import SearchFilters from '../SearchFilters/SearchFilters';
+import SearchFilters from '../SearchFilters';
+import RepoCard from '../RepoCard';
+import RepoPagination from '../RepoPagination';
 
 const SearchResults = () => {
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [params, setParams] = useState({});
+  const [page, setPage] = useState(1);
+  const { repos, loading, error, hasNextPage } = useFetchRepos(params, page);
   const queryParams = useQuery();
 
   const searchTerm = queryParams.get('q');
+  const sortingRule = queryParams.get('sort');
+  const pageNum = queryParams.get('page');
 
   useEffect(() => {
     if (searchTerm) {
-      setLoading(true);
-      Axios.get(`https://api.github.com/search/repositories?q=${searchTerm}`)
-        .then((res) => {
-          setRepos(res.data.items);
-          setLoading(false);
-        })
-        .catch((err) => {
-          setError(true);
-          setLoading(false);
-        });
+      const qParams = {
+        q: searchTerm,
+        sort: sortingRule,
+        page: pageNum,
+      };
+      setParams(qParams);
     }
-  }, [searchTerm]);
+  }, [searchTerm, sortingRule, pageNum]);
 
-  console.log(searchTerm);
+  const handleParamChange = (e) => {
+    const param = e.target.name;
+    const value = e.target.value;
+    setPage(1);
+    setParams((prevParams) => {
+      return { ...prevParams, [param]: value };
+    });
+  };
+
   return (
-    <React.Fragment>
-      <SearchFilters />
-      {loading && <h3>Loadin...</h3>}
+    <Container>
+      <SearchFilters params={params} onParamChange={handleParamChange} />
+      <RepoPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+      {loading && <h3>Loading...</h3>}
       {error && <h3>Error</h3>}
-      {repos && !loading && (
-        <ul>
-          {repos.map((repo) => (
-            <li key={repo.id}>
-              <Link to={`/repos/${repo.full_name}`}>{repo.name}</Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </React.Fragment>
+      {repos.map((repo) => (
+        <RepoCard key={repo.id} repo={repo} />
+      ))}
+      <RepoPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
+    </Container>
   );
 };
 

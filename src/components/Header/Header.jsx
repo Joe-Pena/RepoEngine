@@ -4,8 +4,8 @@ import logo from '../../assets/repoenginelogo.png';
 
 const Header = () => {
   return (
-    <Navbar sticky="top" className="justify-content-center shadow-sm">
-      <Image src={logo} fluid="sm" className="col-8" />
+    <Navbar className="bg-white d-flex justify-content-center">
+      <Image height={80} src={logo} />
     </Navbar>
   );
 };
