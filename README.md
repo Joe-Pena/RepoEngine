@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## RepoEngine
 
-## Available Scripts
+Hello, this is the assignment for you all, at first I went with your typical search API app, which relied on state to get the input value and fetch data from the API. However, I decided to change it and make it rely on the URL for the input. That way you could share a search, and the component would get the state needed from the query params of the URL.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Cloning the application
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+First, clone the application.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+`gh repo clone Joe-Pena/RepoEngine`
 
-### `npm test`
+If you don't use the new Github CLI (I highly recommend it!), then clone through SSH or HTTPS, whichever you typically use.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### HTTPS
 
-### `npm run build`
+`https://github.com/Joe-Pena/RepoEngine.git`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### SSH
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+`git@github.com:Joe-Pena/RepoEngine.git`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Running the application
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Before running the application, be sure to install the dependencies.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+afterwards, run the following command:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+`npm start`
