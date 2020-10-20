@@ -14,14 +14,14 @@ const Searchbar = () => {
   const searchTerms = queryParams.get('q');
   // The search term might contain language queries,
   // so we remove those before we set the input value.
-  const searchQuery = searchTerms ? searchTerms.split('+').shift() : '';
-  const languageQuery = searchTerms ? searchTerms.split('+').slice(1) : '';
+  const searchQuery = searchTerms ? searchTerms.split(' ').shift() : '';
+  const languageQuery = searchTerms ? searchTerms.split(' ').slice(1) : '';
 
   useEffect(() => {
     if (searchQuery) {
       setInput(searchQuery);
     }
-  }, [searchQuery, languageQuery]);
+  }, [searchQuery]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
