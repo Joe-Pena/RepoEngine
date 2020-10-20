@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 
 import useFetchRepos from '../../hooks/useFetchRepos';
 import { useQuery } from '../../hooks';
@@ -22,7 +22,6 @@ const SearchResults = () => {
       const qParams = {
         q: searchTerm,
         sort: sortingRule,
-        page: pageNum,
       };
       setParams(qParams);
     }
@@ -40,12 +39,15 @@ const SearchResults = () => {
   return (
     <Container className="col-lg-8">
       <SearchFilters params={params} onParamChange={handleParamChange} />
-      <RepoPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
-      {loading && <h3>Loading...</h3>}
-      {error && <h3>Error</h3>}
-      {repos.map((repo) => (
-        <RepoCard key={repo.id} repo={repo} />
-      ))}
+      <div className="d-flex justify-content-center">
+        {loading && <Spinner animation="border" variant="primary" />}
+        {error && (
+          <h3>
+            Oops, something is wrong on our end, please try refreshing the page.
+          </h3>
+        )}
+      </div>
+      {!error && repos.map((repo) => <RepoCard key={repo.id} repo={repo} />)}
       <RepoPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
     </Container>
   );

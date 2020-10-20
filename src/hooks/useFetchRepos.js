@@ -29,7 +29,6 @@ const useFetchRepos = (params, page) => {
   const [state, dispatch] = useReducer(reposReducer, {
     repos: [],
     loading: true,
-    error: false,
   });
 
   useEffect(() => {
@@ -60,7 +59,7 @@ const useFetchRepos = (params, page) => {
       .then((res) => {
         dispatch({
           type: ACTIONS.UPDATE_HAS_NEXT_PAGE,
-          payload: { hasNextPage: res.data.length !== 0 },
+          payload: { hasNextPage: res.data.items.length !== 0 },
         });
       })
       .catch((e) => {
