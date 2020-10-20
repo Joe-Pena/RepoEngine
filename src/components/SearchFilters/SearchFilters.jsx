@@ -8,27 +8,27 @@ import { sortingRules, languages } from './filters';
 const SearchFilters = ({ params, onParamChange }) => {
   const history = useHistory();
   const queryParams = useQuery();
-  const [lang, setLang] = useState('');
-  const [sort, setSort] = useState('');
+  // const [lang, setLang] = useState('');
+  // const [sort, setSort] = useState('');
 
   const handleSort = (e) => {
-    setSort(e.target.value);
+    // setSort(e.target.value);
     queryParams.set('sort', e.target.value);
     history.push(`/search?${queryParams}`);
   };
 
-  const handleLang = (e) => {
-    setLang(e.target.value);
+  // const handleLang = (e) => {
+  //   // setLang(e.target.value);
 
-    const searchTerms = queryParams.get('q');
-    const searchQuery = searchTerms.split('+')[0];
+  //   const searchTerms = queryParams.get('q');
+  //   const searchQuery = searchTerms.split('+')[0];
 
-    const newLang = `language:${e.target.value}`;
-    const newQuery = slugify(`${searchQuery} ${newLang}`, '+');
+  //   const newLang = `language:${e.target.value}`;
+  //   const newQuery = slugify(`${searchQuery} ${newLang}`, '+');
 
-    queryParams.set('q', newQuery);
-    history.push(`/search?${queryParams}`);
-  };
+  //   queryParams.set('q', newQuery);
+  //   history.push(`/search?${queryParams}`);
+  // };
 
   return (
     <Form>
@@ -46,7 +46,7 @@ const SearchFilters = ({ params, onParamChange }) => {
             />
           ))}
         </Form.Group>
-        <Form.Group as={Col}>
+        {/* <Form.Group as={Col}>
           <Form.Label>Filter By Language:</Form.Label>
           {languages.map((lang) => (
             <Form.Check
@@ -58,7 +58,7 @@ const SearchFilters = ({ params, onParamChange }) => {
               onChange={(e) => handleLang(e)}
             />
           ))}
-        </Form.Group>
+        </Form.Group> */}
       </Form.Row>
     </Form>
   );

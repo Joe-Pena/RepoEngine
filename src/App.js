@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Header,
-  Welcome,
-  Searchbar,
-  SearchResults,
-  RepoDetails,
-  Footer,
-} from './components';
+import { Header, Welcome, Searchbar, SearchResults } from './components';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.scss';
 import { library } from '@fortawesome/fontawesome-svg-core';

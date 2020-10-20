@@ -1,7 +1,6 @@
 import React from 'react';
 import { Badge, Card, Image } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
 
 const RepoCard = ({ repo }) => {
   return (
