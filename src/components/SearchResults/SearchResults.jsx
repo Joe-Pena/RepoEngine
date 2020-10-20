@@ -38,7 +38,7 @@ const SearchResults = () => {
   };
 
   return (
-    <Container>
+    <Container className="col-lg-8">
       <SearchFilters params={params} onParamChange={handleParamChange} />
       <RepoPagination page={page} setPage={setPage} hasNextPage={hasNextPage} />
       {loading && <h3>Loading...</h3>}
